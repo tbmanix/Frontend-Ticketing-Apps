@@ -1,0 +1,152 @@
+.form-login {
+  width: auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 10%;
+  width: 100%;
+}
+
+.title-form {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.title-form-desc {
+  color: var(--bodycolor);
+  font-size: 18px;
+}
+
+.wrap-input {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.label-form {
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.input-form {
+  border: none;
+  width: 100%;
+  padding: 6px 0;
+  outline: none;
+}
+
+/* input:focus {
+    outline: none;
+  } */
+
+.btn-icon {
+  width: 35px;
+  border: none;
+  background-color: transparent;
+}
+
+.icon {
+  width: 100%;
+}
+
+.input {
+  display: flex;
+  margin-top: 10px;
+  border: 1px solid rgb(156, 156, 156);
+  border-radius: 15px;
+  height: 60px;
+  padding: 10px 20px;
+}
+
+.input:hover {
+  border: 2px solid rebeccapurple;
+  box-shadow: rgba(89, 0, 255, 0.897) 0px 0px 20px;
+}
+
+.input:focus {
+  border: 5px solid rebeccapurple;
+  box-shadow: rgba(89, 0, 255, 0.897) 0px 0px 20px;
+}
+
+.wrap-button {
+  margin: 20px 0;
+}
+
+.btn-signin {
+  width: 100%;
+  background-color: var(--primary);
+  border: none;
+  padding: 19px 0;
+  border-radius: 15px;
+  font-size: 19px;
+  font-weight: 500;
+  color: white;
+}
+
+.btn-signin:hover {
+  background-color: var(--primaryhover);
+  box-shadow: rgba(89, 0, 255, 0.897) 0px 0px 20px;
+  color: white;
+}
+
+.logo-mobile {
+  display: none;
+}
+
+@media (max-width: 575.98px) {
+  .logo-mobile {
+    /* margin-top: 0px; */
+    display: block;
+    width: 105px;
+  }
+
+  .title-form {
+    font-size: 35px;
+    font-weight: 500;
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+
+  .title-form-desc {
+    margin-bottom: 25px;
+    font-size: 15px;
+  }
+
+  .form-style {
+    margin: 5%;
+  }
+
+  .form-login {
+    width: 100%;
+    justify-content: start;
+    align-items: flex-start;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .label-form {
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .input-form {
+    font-size: 15px;
+    border: none;
+    width: 90%;
+    padding: 6.5px 0;
+  }
+
+  .input-icon {
+    width: 30px;
+  }
+}

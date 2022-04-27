@@ -1,0 +1,146 @@
+.main {
+  margin-top: 56px;
+  background-color: #f5f6f8;
+}
+
+.main__title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.main__movie {
+  padding-top: 56px;
+}
+
+.main__order {
+  padding-top: 56px;
+}
+
+.card {
+  padding: 37px;
+  margin-top: 20px;
+  width: 100%;
+  box-shadow: none !important;
+}
+
+.main__order--title {
+  font-size: 19px;
+  font-weight: 400;
+  color: rgba(107, 107, 107, 1);
+  line-height: 45px;
+}
+
+.main__order--content {
+  font-size: 19px;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+}
+
+.main__title--price {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.main__content--price {
+  font-size: 30px;
+  font-weight: 700;
+  color: #5f2efa;
+}
+
+.main__title--items {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.main__order--items {
+  display: block;
+  padding: 18px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.btn-main__title {
+  background-color: #f0f1f6 !important;
+  color: #5f2efa;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  width: 200px;
+  padding: 15px;
+}
+
+.btn-main__title:hover {
+  background-color: #f0f1f6 !important;
+  color: #3508c9;
+  border: 1px solid #3508c9;
+}
+
+.mobile-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 575.98px) {
+  .main__movie {
+    display: none !important;
+  }
+  .main__seat {
+    /* padding: 0 15px; */
+  }
+  .main__order {
+    padding: 10px 0px;
+  }
+  .card-order {
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: none !important;
+  }
+
+  .mobile-text {
+    width: 100%;
+    text-align: center !important;
+    margin-top: -40px !important;
+  }
+
+  .main__order--title {
+    font-size: 15px;
+  }
+
+  .main__order--content {
+    font-size: 20px;
+  }
+
+  .main__title--price {
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  .main__content--price {
+    font-size: 30px;
+    font-weight: 700;
+    color: #5f2efa;
+  }
+
+  .btn-primary {
+    width: 100%;
+    margin: 0 15px;
+    padding: 20px !important;
+    background-color: #5f2efa !important;
+  }
+
+  .mobile-btn {
+    justify-content: center !important;
+  }
+
+  .desktop {
+    display: none !important;
+  }
+
+  .mobile {
+    justify-content: center !important;
+    margin-top: 0 !important;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+}

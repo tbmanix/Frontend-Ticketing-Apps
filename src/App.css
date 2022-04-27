@@ -1,50 +1,21 @@
-.App {
-  text-align: center;
-}
+:root {
+  --titlecolor: rgb(20, 20, 42);
+  --bodycolor: rgb(78, 75, 102);
+  --labelcolor: rgb(110, 113, 145);
+  --placeholdercolor: rgb(160, 163, 189);
+  --linecolor: rgb(222, 222, 22);
+  --inputbackgroundcolor: rgb(239, 240, 246);
+  --backgroundcolor: rgb(247, 247, 252);
+  --off-white: rgb(252, 252, 252);
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  --textbackground: rgb(242, 243, 246);
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+  --primary: rgb(95, 46, 234);
+  --secondary: rgb(28, 200, 238);
+  --error: rgb(237, 46, 126);
+  --success: rgb(0, 186, 136);
+  --warning: rgb(244, 183, 64);
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    /* transform: rotate(720deg); */
-
-    transform: skew(0deg, 0deg);
-  }
-  25% {
-    transform: skew(90deg, 90deg);
-  }
-  50% {
-    transform: skew(0deg, 0deg);
-  }
-  75% {
-    transform: skew(-90deg, -90deg);
-  }
-  to {
-    /* transform: rotate(0deg); */
-    transform: skew(0deg, 0deg);
-  }
+  --primaryhover: rgb(42, 0, 162);
+  --primarydisabled: rgb(175, 150, 244);
 }

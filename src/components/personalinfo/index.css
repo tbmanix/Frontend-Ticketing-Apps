@@ -1,0 +1,163 @@
+.main-payment {
+  margin-top: 56px;
+  background-color: #f5f6f8;
+}
+
+.main__title {
+  padding-top: 56px;
+}
+
+.main__personal {
+  padding-top: 56px;
+}
+
+.main__title--text {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.card-payment {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.card-button {
+  margin-top: 20px;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.btn-payment {
+  margin: 10px;
+  width: 80%;
+  height: 50px;
+  border: 1px solid rgb(185, 185, 185) !important;
+  background-color: rgb(255, 255, 255) !important;
+}
+.img-fluid {
+  /* width: 100%; */
+  height: 50% !important;
+  padding: 1px 0 !important;
+}
+
+.mobile-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* footer {
+    height: 500px;
+  } */
+.footer__image--logo {
+  width: 150px;
+  margin-bottom: 30px;
+}
+
+.footer__text--secondary {
+  font-size: 15px;
+  margin: 0;
+  color: rgb(185, 185, 185);
+}
+.footer__text--heading {
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+
+.footer__text--link {
+  font-size: 15px;
+  color: rgb(185, 185, 185);
+  text-decoration: none;
+  display: block;
+  margin: 10px 0;
+}
+
+.footer__image--sponsor {
+  display: block;
+  margin: 20px 0;
+  max-width: 140px;
+  height: auto;
+}
+
+.footer__text--follow {
+  padding-left: 20px;
+  display: inline !important;
+  font-weight: bold;
+  font-size: 15px;
+  color: rgb(185, 185, 185);
+  text-decoration: none;
+  display: block;
+  margin: 20px 0;
+}
+
+.footer__copyright {
+  text-align: center;
+  color: #9596a1;
+}
+
+@media (max-width: 575.98px) {
+  .main-payment {
+    margin-top: -20px;
+  }
+
+  .main__title {
+    margin: 0 -15px !important;
+    padding: 10px 0 !important;
+  }
+
+  .main__seat {
+    padding: 0;
+  }
+
+  .main__personal {
+    padding: 0;
+  }
+
+  .card-payment {
+    border-radius: 20%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+
+  .btn-payment {
+    margin: 20px !important;
+    width: 80% !important;
+    height: 35px !important;
+    border: 1px solid rgb(185, 185, 185) !important;
+    background-color: rgb(255, 255, 255) !important;
+  }
+
+  .img-fluid {
+    /* object-fit: fill; */
+    height: 15px !important;
+  }
+
+  .col-3 {
+    width: 32.5% !important;
+  }
+
+  .mobile-btn {
+    justify-content: center !important;
+  }
+
+  .dekstop {
+    display: none !important;
+  }
+
+  .desktop {
+    display: none !important;
+  }
+  .mobile {
+    margin-bottom: 0px !important;
+  }
+
+  .mobile-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

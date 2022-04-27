@@ -1,0 +1,32 @@
+.main {
+  margin-top: 56px !important;
+  background-color: #f5f6f8;
+  padding: 0 5rem 0;
+}
+.main__title--items {
+  font-size: 24px;
+  font-weight: 600;
+}
+.btn-main__title {
+  background-color: #f0f1f6 !important;
+  color: #5f2efa;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  width: 200px;
+  padding: 15px;
+}
+
+.btn-main__title:hover {
+  background-color: #f0f1f6 !important;
+  color: #3508c9;
+  border: 1px solid #3508c9;
+}
+
+@media (max-width: 575.98px) {
+  .main {
+    padding: 0;
+  }
+  .container-fluid {
+    padding: 0 15px !important;
+  }
+}

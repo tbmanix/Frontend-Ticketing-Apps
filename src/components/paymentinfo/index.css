@@ -1,0 +1,33 @@
+.main__title-payment {
+  padding-top: 56px;
+}
+
+.main__personal {
+  padding-top: 56px;
+}
+
+.main__title--text {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.card-payment {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+@media (max-width: 575.98px) {
+  .main__title {
+    margin: 0 -15px !important;
+    padding: 10px 0 !important;
+  }
+  .card-payment {
+    border-radius: 20%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  .dekstop {
+    display: none !important;
+  }
+}

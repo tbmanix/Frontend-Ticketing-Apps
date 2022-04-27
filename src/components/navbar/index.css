@@ -1,0 +1,33 @@
+.nav__copyright {
+  display: none;
+}
+
+nav {
+  padding: 0 5rem 0;
+}
+
+.btn__signin {
+  width: 115px;
+  background-color: var(--primary);
+  color: white;
+  margin-right: 0;
+}
+
+.navbar {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 20px;
+  background-color: white !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+/* .nav-link {
+  text-decoration: none !important;
+} */
+
+@media (max-width: 575.98px) {
+  nav {
+    padding: 0 1rem 0;
+  }
+}

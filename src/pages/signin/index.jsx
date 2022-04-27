@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import banner from "../../assets/banner.png";
-import logo from "../../assets/logo.png";
 import logo2 from "../../assets/logo2.svg";
 import eyeslash from "../../assets/eye-slash-fill.svg";
 import eye from "../../assets/eye-fill.svg";
 import "./index.css";
-// import "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css";
+import TitleBanner from "../../components/titlebanner";
+import FormSignIn from "../../components/formsignin";
+// import { useNavigate } from "react-router-dom";
 
 function SignIn() {
+  document.title = "Tickitz | Home";
   const [click, setClick] = useState(false);
 
   const handleClick = (event) => {
@@ -18,7 +20,19 @@ function SignIn() {
 
   return (
     <>
-      <div className={"container-fluid"}>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-8 banner">
+            <div className="background-img">
+              <TitleBanner />
+            </div>
+          </div>
+          <div className="col-4 form">
+            <FormSignIn />
+          </div>
+        </div>
+      </div>
+      {/* <div className={"container-fluid"}>
         <div className="row">
           <div className="col-8 banner">
             <div className="background-img">
@@ -30,24 +44,26 @@ function SignIn() {
           </div>
           <div className="col-4 form">
             <div className="form-login">
-              <form action="">
-                <input className="coba3" type="text" />
+              <form className="form-style" action="">
                 <img className="logo-mobile" src={logo2} alt="" />
                 <span className="title-form">Sign In</span>
                 <span className="title-form-desc">
-                  Sign in with your data that you entered during your
-                  registration
+                  Sign in with your data that you entered during your registration
                 </span>
                 <div className="wrap-input">
-                  <label>Email</label>
+                  <label className="label-form">Email</label>
                   <div className="input">
-                    <input type="email" placeholder="Write your email" />
+                    <input className="input-form" type="email" placeholder="Write your email" />
                   </div>
                 </div>
                 <div className="wrap-input">
-                  <label>Password</label>
+                  <label className="label-form">Password</label>
                   <div className="input">
-                    <input type="password" placeholder="Write your password" />
+                    <input
+                      className="input-form"
+                      type="password"
+                      placeholder="Write your password"
+                    />
                     <button onClick={handleClick} className="btn-icon">
                       {click === false ? (
                         <img className="icon" src={eyeslash} alt="" />
@@ -59,7 +75,7 @@ function SignIn() {
                 </div>
 
                 <div className="wrap-button">
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-signin">
                     Sign In
                   </button>
                 </div>
@@ -68,7 +84,7 @@ function SignIn() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

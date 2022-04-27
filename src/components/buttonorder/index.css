@@ -1,0 +1,14 @@
+.btn-checkout {
+  background-color: #5f2efa !important;
+  padding: 15px 50px !important;
+}
+
+.btn-change {
+  padding: 15px 50px !important;
+}
+
+.mobile-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

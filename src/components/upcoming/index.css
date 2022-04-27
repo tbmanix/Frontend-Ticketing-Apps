@@ -1,0 +1,34 @@
+/* .upcoming {
+  background-color: rgb(245, 246, 248);
+  height: 3000px;
+  padding: 3rem 5rem; v
+} */
+
+.upcoming {
+  height: 850px;
+  /* background-color: rgb(206, 255, 196); */
+  padding-top: 4rem;
+}
+
+.upcoming__btn {
+  background-color: #ffffff;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-weight: bold;
+  border-radius: 10px;
+  min-width: 10rem;
+  margin: 10px 20px;
+  padding: 13px;
+}
+
+.upcoming__btn:hover {
+  background-color: var(--primary);
+  border: none;
+  color: rgb(255, 255, 255);
+}
+
+.upcoming__btn:focus {
+  color: #ffffff;
+  background-color: var(--primary);
+  box-shadow: rgba(95, 46, 234, 0.4) 0px 10px 20px;
+}

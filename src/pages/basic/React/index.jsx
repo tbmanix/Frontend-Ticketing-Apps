@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./index.css";
 import styles from "./React.module.css";
+import Navbar from "../../../components/basic/Navbar";
 
 function BasicReact() {
   const data = [
     { id: 1, name: "Spiderman" },
     { id: 2, name: "Batman" },
-    { id: 3, name: "Lego" },
+    { id: 3, name: "Lego" }
   ];
 
   const [email, setEmail] = useState();
@@ -43,6 +44,9 @@ function BasicReact() {
   return (
     <>
       <h1>Basic React Page</h1>
+      <hr />
+      <h3>Component</h3>
+      <Navbar />
       <hr />
       <h3>Mapping</h3>
       {data.map((item, index) => (
@@ -89,9 +93,7 @@ function BasicReact() {
       )}
       <h3>Style in React</h3>
       {/* react module */}
-      <h1 className={`${styles.heading} ${styles.textUnderline} text-center`}>
-        Hello World
-      </h1>
+      <h1 className={`${styles.heading} ${styles.textUnderline} text-center`}>Hello World</h1>
       <h1 className={(styles.heading, styles.textUnderline)}>Hello World</h1>
       <h1 className={styles.heading2}>Hello World</h1>
     </>
