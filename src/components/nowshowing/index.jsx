@@ -25,7 +25,8 @@ const NowShowing = () => {
       //   console.log(limit);
       //   console.log(page);
       // Proses
-      const resultMovie = await axios.get(`movie/?limit=${limit}&searchReleaseDate=${releaseDate}`);
+      // const resultMovie = await axios.get(`movie/?limit=${limit}&searchReleaseDate=${releaseDate}`);
+      const resultMovie = await axios.get(`movie/?limit=${limit}`);
       // console.log(resultMovie);
       // Output
       setData(resultMovie.data.data);

@@ -7,6 +7,7 @@ import "./index.css";
 import TitleBanner from "../../components/titlebanner";
 import FormSignIn from "../../components/formsignin";
 // import { useNavigate } from "react-router-dom";
+import "./index.css";
 
 function SignIn() {
   document.title = "Tickitz | Home";
@@ -20,7 +21,7 @@ function SignIn() {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid-signin">
         <div className="row">
           <div className="col-8 banner">
             <div className="background-img">

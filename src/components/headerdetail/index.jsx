@@ -28,6 +28,7 @@ const HeaderDetail = () => {
       //   console.log(page);
       // Proses
       const resultMovieById = await axios.get(`movie/${params.id}`);
+      // const resultMovieById = await axios.get(`schedule/3`);
       // console.log(resultMovieById.data.data[0]);
       // Output
       setData(resultMovieById.data.data[0]);

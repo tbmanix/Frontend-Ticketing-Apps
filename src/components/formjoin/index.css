@@ -1,0 +1,83 @@
+.join {
+  height: 500px;
+  margin: 0 auto;
+}
+.join__text--primary {
+  color: rgb(95, 46, 234) !important;
+  font-size: 50px !important;
+  font-weight: 700 !important;
+}
+
+.join__card {
+  background-color: #ffffff;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  box-shadow: 0 10px 30px -20px rgba(0, 0, 0, 0.35);
+  height: 400px;
+  margin: 0 20px;
+  min-width: 14rem;
+  padding: 30px;
+}
+
+.join__form {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.join__form--input {
+  padding: 12px !important;
+  width: 250px !important;
+  margin: 0 20px !important;
+  display: inline !important;
+}
+
+.join__form--button {
+  padding: 12px;
+  display: inline !important;
+  background-color: rgba(95, 46, 234, 1);
+  border: none;
+  color: rgb(255, 255, 255);
+  border-radius: 4px;
+  width: 6rem;
+}
+
+.join__text {
+  font-size: 15px;
+  margin: 0;
+  color: rgb(185, 185, 185);
+  justify-content: center;
+  text-align: center;
+}
+@media (max-width: 575.98px) {
+  .join {
+    height: 450px;
+  }
+
+  .join__card {
+    background-color: #ffffff;
+    border: none;
+    box-shadow: 0 10px 30px -20px rgba(0, 0, 0, 0.35);
+    height: 350px;
+    margin: 0 20px;
+    min-width: 14rem;
+    padding: 10px;
+  }
+
+  .join__form--input {
+    padding: 10px;
+    width: 200px !important;
+    margin: 0 10px 0 0 !important;
+    display: inline;
+  }
+
+  .join__form--button {
+    margin-top: 10px;
+    padding: 10px 1px;
+    display: inline;
+    background-color: rgba(95, 46, 234, 1);
+    border: none;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    width: 5rem;
+  }
+}

@@ -4,6 +4,8 @@ import NavBar from "../../components/navbar";
 import NowShowing from "../../components/nowshowing";
 import Upcoming from "../../components/upcoming";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/footer";
+import FormJoin from "../../components/formjoin";
 
 const Home = (props) => {
   return (
@@ -13,10 +15,8 @@ const Home = (props) => {
         <HeaderHome />
         <NowShowing />
         <Upcoming />
-        <hr />
-        <h1>Join</h1>
-        <hr />
-        <footer></footer>
+        <FormJoin />
+        <Footer />
       </div>
     </>
   );

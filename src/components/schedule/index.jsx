@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useSearchParams, useLocation, useParams } from "react-router-dom";
+import axios from "../../utils/axios";
 
 import logocinema from "../../assets/ebv.id 2.png";
 
 import "./index.css";
+import CardSchedule from "../cardschedule";
 
 const Schedule = () => {
+  const params = useParams();
+  const navigate = useNavigate();
+  const limit = 99;
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getdataScheduleById();
+  }, []);
+
+  const getdataScheduleById = async () => {
+    try {
+      // console.log("GET DATA MOVIE");
+      // Input
+      //   console.log(limit);
+      //   console.log(page);
+      // Proses
+      const resultScheduleById = await axios.get(
+        `schedule/?limit=${limit}&searchMovieId=${params.id}`
+      );
+      // Output
+      setData(resultScheduleById.data.data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  // console.log(data);
+
+  const handleBookNow = () => {
+    // console.log(id);
+    navigate(`/orderpage`);
+  };
+
   return (
     <>
       <section className="schedule">
@@ -70,7 +106,10 @@ const Schedule = () => {
           </div>
           <div className="schedule__cinema">
             <div className="row">
-              <div className="col-md-4">
+              {data.map((item) => (
+                <CardSchedule key={item.id} data={item} handleBook={handleBookNow} />
+              ))}
+              {/* <div className="col-md-4">
                 <div className="card card-schedule border-light shadow my-4">
                   <div className="card-header bg-transparent border-secondary">
                     <div className="row">
@@ -235,10 +274,10 @@ const Schedule = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
-          <p className="text-center my-5">View More</p>
+          <p className="text-center my-3">View More</p>
         </div>
       </section>
     </>

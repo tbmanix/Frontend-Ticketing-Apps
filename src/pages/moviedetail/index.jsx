@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../../components/footer";
 import HeaderDetail from "../../components/headerdetail";
 
 import NavBar from "../../components/navbar";
@@ -9,6 +10,7 @@ const MovieDetail = () => {
       <NavBar />
       <HeaderDetail />
       <Schedule />
+      <Footer />
     </>
   );
 };

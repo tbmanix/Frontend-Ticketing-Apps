@@ -6,6 +6,7 @@ import "./index.css";
 import PersonalInfo from "../../components/personalinfo";
 import ButtonPayment from "../../components/buttonpayment";
 import PaymentMethod from "../../components/paymentmethod";
+import Footer from "../../components/footer";
 
 const Payment = () => {
   return (
@@ -27,6 +28,7 @@ const Payment = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
