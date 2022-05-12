@@ -22,6 +22,13 @@ a {
   text-decoration: none !important;
 }
 
+.image-profile {
+  width: 50px;
+  border-radius: 100%;
+}
+
+.navbar
+
 /* .nav-link {
   text-decoration: none !important;
 } */

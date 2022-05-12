@@ -10,10 +10,10 @@ const NowShowing = () => {
   const navigate = useNavigate();
   const limit = 99;
   const [page, setPage] = useState(1);
-  const [releaseDate, setReleaseDate] = useState(4);
+  const [releaseDate, setReleaseDate] = useState(new Date().getMonth());
   const [data, setData] = useState([]);
   const [pageInfo, setPageInfo] = useState({});
-
+  console.log(releaseDate);
   useEffect(() => {
     getdataMovie();
   }, []);
@@ -26,7 +26,7 @@ const NowShowing = () => {
       //   console.log(page);
       // Proses
       // const resultMovie = await axios.get(`movie/?limit=${limit}&searchReleaseDate=${releaseDate}`);
-      const resultMovie = await axios.get(`movie/?limit=${limit}`);
+      const resultMovie = await axios.get(`movie/?limit=${limit}&searchReleaseDate=${releaseDate}`);
       // console.log(resultMovie);
       // Output
       setData(resultMovie.data.data);

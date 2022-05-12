@@ -4,7 +4,11 @@ import logocinema from "../../assets/ebv.id 2.png";
 
 const CardSchedule = (props) => {
   const { premiere, price, location, time } = props.data;
-  console.log(props);
+  // console.log(props);
+
+  const changeDataBooking = (data) => {
+    setDataOrder({ ...dataOrder, ...data.data });
+  };
   return (
     <div className="col-md-4">
       <div className="card card-schedule border-light shadow my-4">
@@ -22,7 +26,13 @@ const CardSchedule = (props) => {
         <div className="card-body">
           <div className="schedule__cinema--button d-flex justify-content-between">
             {time.map((item) => (
-              <button className="btn btn-time">{item}</button>
+              <button
+                className="btn btn-time"
+                key={item}
+                onClick={() => changeDataBooking({ timeBooking: item, scheduleId: id })}
+              >
+                {item}
+              </button>
             ))}
           </div>
           <div className="schedule__cinema--price d-flex justify-content-between p-1 mt-4">

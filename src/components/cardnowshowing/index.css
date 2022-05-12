@@ -57,6 +57,9 @@
   padding: 20px;
   border-radius: 4%;
 }
+.nowshowing__movie--items {
+  height: 210px;
+}
 
 .card-desc {
   display: none;

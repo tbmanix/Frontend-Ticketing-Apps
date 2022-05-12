@@ -21,7 +21,7 @@ function SignIn() {
 
   return (
     <>
-      <div className="container-fluid-signin">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-8 banner">
             <div className="background-img">

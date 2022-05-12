@@ -1,8 +1,9 @@
 .card-upcoming {
   /* height: 100% !important; */
   /* max-height: 450px !important; */
-  margin: 0 50px !important;
-  min-width: 14rem !important;
+  max-width: 14rem;
+  margin: 0 50px 30px !important;
+  min-width: 12rem !important;
   padding: 30px !important;
   border-radius: 4% !important;
   display: flex;

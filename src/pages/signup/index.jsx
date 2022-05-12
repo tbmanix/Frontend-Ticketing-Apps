@@ -3,14 +3,14 @@ import TitleBanner from "../../components/titlebanner";
 import FormSignUp from "../../components/formsignup";
 
 function SignUp() {
-  document.title = "Tickitz | Home";
-  const [click, setClick] = useState(false);
+  document.title = "Sign Up";
+  // const [click, setClick] = useState(false);
 
-  const handleClick = (event) => {
-    event.preventDefault();
-    console.log(click);
-    setClick(!click);
-  };
+  // const handleClick = (event) => {
+  //   event.preventDefault();
+  //   console.log(click);
+  //   setClick(!click);
+  // };
 
   return (
     <div className="container-fluid">

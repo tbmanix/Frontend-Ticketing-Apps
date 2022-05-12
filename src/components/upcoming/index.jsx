@@ -8,17 +8,37 @@ import Card from "../card";
 const Upcoming = () => {
   const limit = 99;
   const [page, setPage] = useState(1);
-  const [releaseDate, setReleaseDate] = useState(4);
+  const [releaseDate, setReleaseDate] = useState(new Date().getMonth() + 2);
   const [data, setData] = useState([]);
   const [pageInfo, setPageInfo] = useState({});
+
+  const month = [
+    { number: 1, title: "Januari" },
+    { number: 2, title: "Februari" },
+    { number: 3, title: "Maret" },
+    { number: 4, title: "April" },
+    { number: 5, title: "Mei" },
+    { number: 6, title: "Juni" },
+    { number: 7, title: "Juli" },
+    { number: 8, title: "Agustus" },
+    { number: 9, title: "September" },
+    { number: 10, title: "Oktober" },
+    { number: 11, title: "November" },
+    { number: 12, title: "Desember" }
+  ];
 
   useEffect(() => {
     getdataMovie();
   }, []);
 
+  useEffect(() => {
+    getdataMovie();
+  }, [releaseDate]);
+
   const getdataMovie = async () => {
     try {
       console.log("GET DATA MOVIE");
+
       // Input
       //   console.log(limit);
       //   console.log(page);
@@ -33,6 +53,8 @@ const Upcoming = () => {
       console.log(error.response);
     }
   };
+
+  console.log(releaseDate);
 
   // console.log(data);
   // console.log(pageInfo);
@@ -51,7 +73,21 @@ const Upcoming = () => {
         </a>
       </div>
       <div className="d-flex flex-nowrap overflow-auto text-center my-5">
-        <button type="button" className="upcoming__btn">
+        {month.map((item) => (
+          <button
+            type="button"
+            className="upcoming__btn"
+            // className={`btn mx-1 my-2 ${
+            //   item.number === releaseDate ? "btn-primary" : "btn-outline-primary"
+            // }`}
+            onClick={() => setReleaseDate(item.number)}
+            // onChange={handlemonth}
+            key={item.number}
+          >
+            {item.title}
+          </button>
+        ))}
+        {/* <button type="button" className="upcoming__btn">
           January
         </button>
         <button type="button" className="upcoming__btn">
@@ -86,7 +122,7 @@ const Upcoming = () => {
         </button>
         <button type="button" className="upcoming__btn">
           Desember
-        </button>
+        </button> */}
       </div>
       <div className="d-flex flex-nowrap overflow-auto text-center mt-5">
         {data.map((item) => (
