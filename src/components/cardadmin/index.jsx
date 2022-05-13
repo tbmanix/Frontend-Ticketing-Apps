@@ -23,10 +23,10 @@ const CardAdmin = (props) => {
           <span className="nowshowing__text--items">{name}</span>
           <span className="d-block nowshowing__text--items-secondary pt-1">{category}</span>
         </div>
-        <button onClick={() => props.handleDetail(id)} className="btn__update">
+        <button onClick={() => props.setUpdate(props.data)} className="btn__update">
           Update
         </button>
-        <button onClick={() => props.handleDetail(id)} className="btn__delete">
+        <button onClick={() => props.handleDelete(id)} className="btn__delete">
           Delete
         </button>
       </div>

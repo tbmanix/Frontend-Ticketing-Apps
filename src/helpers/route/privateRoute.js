@@ -1,6 +1,8 @@
 import React from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 
+import PropTypes from "prop-types";
+
 export default function PrivateRoute(props) {
   const location = useLocation();
   const token = localStorage.getItem("token");
@@ -20,3 +22,7 @@ export default function PrivateRoute(props) {
 
   return <Outlet />;
 }
+
+PrivateRoute.propTypes = {
+  isAdmin: PropTypes.bool
+};

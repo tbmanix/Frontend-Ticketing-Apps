@@ -21,8 +21,8 @@
 }
 
 .form-duration {
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0% !important;
+  padding: 0% !important;
 }
 .btn-submit {
   width: 140px;
@@ -60,4 +60,13 @@
   margin: 20px 0;
   display: flex;
   justify-content: flex-end;
+}
+.image__preview {
+  width: 80%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+.image__preview--item {
+  width: 40%;
 }

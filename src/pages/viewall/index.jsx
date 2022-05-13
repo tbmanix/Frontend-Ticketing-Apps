@@ -9,16 +9,22 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getMovie } from "../../stores/action/movie";
-import { useNavigate } from "react-router-dom";
+import { getMovie } from "../../stores/actions/movie";
+import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
 
 function ViewAll() {
+  document.title = "Tickitz | View All";
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  //params Url
+  const [searchParams] = useSearchParams();
+  const params = Object.fromEntries([...searchParams]);
+  const [page, setPage] = useState(params.page ? params.page : "1");
+  const [releaseDate, setReleaseDate] = useState(params.page ? params.releaseDate : null);
 
   const limit = 8;
-  const [page, setPage] = useState(1);
-  const [releaseDate, setReleaseDate] = useState();
+  // const [page, setPage] = useState(1);
+  // const [releaseDate, setReleaseDate] = useState();
   // const [releaseDate, setReleaseDate] = useState(null);
   // const [data, setData] = useState([]);
   // const [pageInfo, setPageInfo] = useState({});
@@ -46,9 +52,26 @@ function ViewAll() {
     getDataMovie();
   }, []);
 
+  // with params url
   useEffect(() => {
     getDataMovie();
+
+    const params = {};
+    if (page !== "1") {
+      params.page = page;
+    }
+    if (releaseDate) {
+      params.releaseDate = releaseDate;
+    }
+    navigate({
+      pathname: "/viewall",
+      search: `?${createSearchParams(params)}`
+    });
   }, [page, releaseDate, sort, search]);
+
+  // useEffect(() => {
+  //   getDataMovie();
+  // }, [page, releaseDate, sort, search]);
 
   // const getDataMovie = async () => {
   //   try {
@@ -109,8 +132,10 @@ function ViewAll() {
   console.log(search);
 
   const handlePagination = (data) => {
-    console.log(data.selected + 1);
     setPage(data.selected + 1);
+
+    // console.log(data.selected + 1);
+    // setPage(data.selected + 1);
   };
 
   // console.log(data);
@@ -187,6 +212,7 @@ function ViewAll() {
           containerClassName={"pagination"}
           subContainerClassName={"pages pagination"}
           activeClassName={"active"}
+          initialPage={page - 1}
         />
       </div>
       <Footer />

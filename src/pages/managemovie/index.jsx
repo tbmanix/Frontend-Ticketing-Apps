@@ -4,17 +4,45 @@ import Pagination from "react-paginate";
 
 import "./index.css";
 
+import { useSelector, useDispatch } from "react-redux";
+import { getMovie, postMovie, updateMovie, deleteMovie } from "../../stores/actions/movie";
+
 import CardAdmin from "../../components/cardadmin";
 import Navbar from "../../components/navbaradmin";
 import Footer from "../../components/footer";
+import { useNavigate } from "react-router-dom";
 
 function ManageMovie() {
+  document.title = "Tickitz | Manage Movie";
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
   const limit = 8;
   const [page, setPage] = useState(1);
-  const [data, setData] = useState([]);
-  const [pageInfo, setPageInfo] = useState({});
+  // const [data, setData] = useState([]);
+  // const [pageInfo, setPageInfo] = useState({});
   const [sort, setSort] = useState("name ASC");
   const [search, setSearch] = useState("");
+  // const [releaseDate, setReleaseDate] = useState(1);
+  const movie = useSelector((state) => state.movie);
+
+  const [form, setForm] = useState({
+    name: "",
+    category: "",
+    releaseDate: "",
+    cast: "",
+    director: "",
+    durationHour: "",
+    durationMinute: "",
+    synopsis: "",
+    image: null
+  });
+
+  const [idMovie, setIdMovie] = useState("");
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     getDataMovie();
@@ -22,22 +50,25 @@ function ManageMovie() {
 
   useEffect(() => {
     getDataMovie();
-  }, [page, , sort, search]);
+  }, [page, sort, search]);
 
   const getDataMovie = async () => {
     try {
-      console.log("GET DATA MOVIE");
+      // console.log("GET DATA MOVIE");
 
-      const resultMovie = await axios.get(
-        `movie/?page=${page}&limit=${limit}&searchName=${search}&sort=${sort}`
-      );
+      // const resultMovie = await axios.get(
+      //   `movie/?page=${page}&limit=${limit}&searchName=${search}&sort=${sort}`
+      // );
 
-      console.log(resultMovie);
+      // console.log(resultMovie);
 
-      // Output
-      setData(resultMovie.data.data);
-      setPageInfo(resultMovie.data.pagination);
+      // // Output
+      // setData(resultMovie.data.data);
       // setPageInfo(resultMovie.data.pagination);
+
+      // setPageInfo(resultMovie.data.pagination);
+
+      await dispatch(getMovie(page, limit, search, sort));
     } catch (error) {
       console.log(error.response);
     }
@@ -61,6 +92,115 @@ function ManageMovie() {
   const handleDetailMovie = (id) => {
     console.log(id);
   };
+
+  const handleChangeForm = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setForm({ ...form, [name]: files[0] });
+      setImage(URL.createObjectURL(files[0]));
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  };
+  console.log(image);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(form);
+    const { durationHour, durationMinute } = form;
+    // setForm({ ...form, duration: `${durationHour}h ${durationMinute}m` });
+    // delete form.durationHour;
+    // delete form.durationMinute;
+    const formData = new FormData();
+
+    // formData.append("name", form.name);
+    // formData.append("category", form.name);
+    // formData.append("releaseDate", form.name);
+    // formData.append("cast", form.name);
+    // formData.append("director", form.name);
+    // formData.append("duration", `${form.durationHour}h ${form.durationMinute}m`);
+    // formData.append("synopsis", form.synopsis);
+    // formData.append("image", form.image);
+
+    for (const data in form) {
+      formData.append(data, form[data]);
+    }
+    for (const data of formData.entries()) {
+      console.log(data[0], ", " + data[1]);
+      // name, "value"
+    }
+    console.log(formData);
+    dispatch(postMovie(formData));
+
+    // console.log(`${form.durationHour}h ${form.durationMinute}m`);
+    getDataMovie();
+    setImage(null);
+    resetForm();
+  };
+  // console.log(form);
+
+  const setUpdate = (data) => {
+    const { id, name, category, releaseDate, cast, director, duration, synopsis, image } = data;
+
+    // const durations = duration.split(" ")[0];
+    // const durationHour = durations.slice(0, -1);
+    setForm({
+      ...form,
+      name,
+      category,
+      releaseDate: releaseDate.split("T")[0],
+      cast,
+      director,
+      // durationHour: duration.split(" ")[0].substring(0, duration.split(" ")[0].length - 1),
+      // durationMinute: duration.split(" ")[1].substring(0, duration.split(" ")[1].length - 1),
+      durationHour: duration.split(" ")[0].substring(0, duration.split(" ")[0].length - 1),
+      durationMinute: duration.split(" ")[1].substring(0, duration.split(" ")[1].length - 1),
+      synopsis,
+      image
+    });
+
+    setIdMovie(id);
+    setIsUpdate(true);
+    console.log(form);
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    console.log(form);
+    console.log(idMovie);
+    const formData = new FormData();
+    for (const data in form) {
+      formData.append(data, form[data]);
+    }
+    // formData.append("name", form.name)
+    // axios.patch("...", formData)
+    dispatch(updateMovie(idMovie, formData));
+
+    getDataMovie();
+
+    setIsUpdate(false);
+    setImage(null);
+    resetForm();
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteMovie(id));
+    console.log(id);
+  };
+
+  const resetForm = () => {
+    setForm({
+      name: "",
+      category: "",
+      releaseDate: "",
+      cast: "",
+      director: "",
+      durationHour: "",
+      durationMinute: "",
+      synopsis: "",
+      image: null
+    });
+  };
+
   return (
     <>
       {" "}
@@ -71,15 +211,35 @@ function ManageMovie() {
             <span className="main__title">Movie Selected</span>
             <div className="card card-order">
               <form
-                // onSubmit={handleSubmit}
+                onSubmit={isUpdate ? handleUpdate : handleSubmit}
                 // onReset={handleReset}
                 className=""
                 action=""
               >
                 <div className="row">
                   <div className="col-md-4">
-                    <input type="file" name="image" />
-                    <div className="card"></div>
+                    <input
+                      type="file"
+                      name="image"
+                      onChange={(e) => handleChangeForm(e)}
+                      // value={form.image}
+                    />
+                    <div className="card image__preview">
+                      {" "}
+                      {image && (
+                        <img
+                          className="image__preview--item"
+                          // src={image}
+                          src={
+                            isUpdate
+                              ? `https://res.cloudinary.com/dx8zjtlv8/image/upload/v1651042190/${form.image}`
+                              : image
+                          }
+                          alt="image movie preview"
+                          // value={form.image}
+                        />
+                      )}
+                    </div>
                   </div>
                   <div className="col-md-8">
                     {/* {!message ? null : isError ? (
@@ -101,6 +261,8 @@ function ManageMovie() {
                               type="text"
                               placeholder="Input Name"
                               name="name"
+                              onChange={(e) => handleChangeForm(e)}
+                              value={form.name}
                             />
                           </div>
                         </div>
@@ -112,6 +274,8 @@ function ManageMovie() {
                               type="text"
                               placeholder="Input Director"
                               name="director"
+                              onChange={(e) => handleChangeForm(e)}
+                              value={form.director}
                             />
                           </div>
                         </div>
@@ -123,19 +287,23 @@ function ManageMovie() {
                               type="date"
                               placeholder="Write your email"
                               name="releaseDate"
+                              onChange={(e) => handleChangeForm(e)}
+                              value={form.releaseDate}
                             />
                           </div>
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="wrap-input">
-                          <label className="label-form">Password</label>
+                          <label className="label-form">Category</label>
                           <div className="input-movie">
                             <input
                               className="input-form-movie"
-                              type="password"
-                              placeholder="Input Password"
-                              name="password"
+                              type="text"
+                              placeholder="Input Category"
+                              name="category"
+                              onChange={(e) => handleChangeForm(e)}
+                              value={form.category}
                             />
                           </div>
                         </div>
@@ -144,35 +312,41 @@ function ManageMovie() {
                           <div className="input-movie">
                             <input
                               className="input-form-movie"
-                              type="password"
+                              type="text"
                               placeholder="Input Cast"
-                              name="password"
+                              name="cast"
+                              onChange={(e) => handleChangeForm(e)}
+                              value={form.cast}
                             />
                           </div>
                         </div>
-                        <div className="row form-duration">
+                        <div className="row ">
                           <div className="col-md-6">
-                            <div className="wrap-input">
+                            <div className="wrap-input form-duration">
                               <label className="label-form">Duration Hour</label>
                               <div className="input-movie">
                                 <input
                                   className="input-form-movie"
-                                  type="password"
+                                  type="text"
                                   placeholder="Input Cast"
-                                  name="password"
+                                  name="durationHour"
+                                  onChange={(e) => handleChangeForm(e)}
+                                  value={form.durationHour}
                                 />
                               </div>
                             </div>
                           </div>
                           <div className="col-md-6">
-                            <div className="wrap-input">
+                            <div className="wrap-input form-duration">
                               <label className="label-form">Duration Minutes</label>
                               <div className="input-movie">
                                 <input
                                   className="input-form-movie"
-                                  type="password"
+                                  type="text"
                                   placeholder="Input Cast"
-                                  name="password"
+                                  name="durationMinute"
+                                  onChange={(e) => handleChangeForm(e)}
+                                  value={form.durationMinute}
                                 />
                               </div>
                             </div>
@@ -185,7 +359,13 @@ function ManageMovie() {
                     <div className="wrap-input">
                       <label className="label-form">Synopsis</label>
                       <div className="input-movie-synopsis">
-                        <textarea className="form-control" rows="3" name="synopsis"></textarea>
+                        <textarea
+                          className="form-control"
+                          rows="3"
+                          name="synopsis"
+                          onChange={(e) => handleChangeForm(e)}
+                          value={form.synopsis}
+                        ></textarea>
                       </div>
                     </div>
                   </div>
@@ -195,7 +375,7 @@ function ManageMovie() {
                     Reset
                   </button>
                   <button type="submit" className="btn btn-submit">
-                    Submit
+                    {isUpdate ? "Update" : "Submit"}
                   </button>
                 </div>
               </form>
@@ -206,7 +386,6 @@ function ManageMovie() {
               <div>
                 <span className="main__title">Data Movie</span>
               </div>
-
               <div>
                 <input
                   type="text"
@@ -227,21 +406,30 @@ function ManageMovie() {
             </div>
             <div className="card card-order">
               <div className="d-flex flex-wrap text-center mt-5 justify-content-center">
-                {data.map((item) => (
-                  <CardAdmin
-                    className="viewall__card"
-                    key={item.id}
-                    data={item}
-                    handleDetail={handleDetailMovie}
-                  />
-                ))}
+                {movie.isLoading ? (
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                ) : (
+                  movie.data.map((item) => (
+                    <CardAdmin
+                      className="viewall__card"
+                      key={item.id}
+                      data={item}
+                      handleDetail={handleDetailMovie}
+                      setUpdate={setUpdate}
+                      handleUpdate={handleUpdate}
+                      handleDelete={handleDelete}
+                    />
+                  ))
+                )}
               </div>
             </div>
             <Pagination
               previousLabel={"Previous"}
               nextLabel={"Next"}
               breakLabel={"..."}
-              pageCount={Math.ceil(pageInfo.totalPage)}
+              pageCount={Math.ceil(movie.pageInfo.totalPage)}
               onPageChange={handlePagination}
               containerClassName={"pagination"}
               subContainerClassName={"pages pagination"}

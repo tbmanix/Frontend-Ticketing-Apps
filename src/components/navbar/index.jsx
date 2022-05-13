@@ -57,7 +57,8 @@ const NavBar = () => {
               <hr />
             </ul>
             <div className="d-flex justify-content-center">
-              {localStorage.getItem("token") ? (
+              {dataUser ? (
+                // localStorage.getItem("token") ?
                 // <button className="btn btn__signin" type="button">
                 //   Logout
                 // </button>
