@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import imagemovie from "../../assets/Rectangle 119.png";
 import axios from "../../utils/axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./index.css";
 import CardNowShowing from "../cardnowshowing";
@@ -44,13 +44,15 @@ const NowShowing = () => {
 
   return (
     <div className="nowshowing">
-      <div className="d-flex justify-content-between">
-        <a href="" className="nowshowing__text">
+      <div className="d-flex justify-content-between w-100">
+        {/* <a href="/viewall"> */}
+        <Link to="" className="nowshowing__text">
           Now Showing
-        </a>
-        <a href="" className="nowshowing__text">
-          view all
-        </a>
+        </Link>
+        {/* </a> */}
+        <Link to="/viewall" className="nowshowing__text">
+          View All
+        </Link>
       </div>
       <div className="d-flex flex-nowrap overflow-auto text-center mt-4">
         {data.map((item) => (

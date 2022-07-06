@@ -8,7 +8,7 @@ import "./index.css";
 
 const HeaderDetail = () => {
   const params = useParams();
-  // console.log(params.id);
+  console.log(params.id);
   const navigate = useNavigate();
   const limit = 99;
   const [page, setPage] = useState(1);

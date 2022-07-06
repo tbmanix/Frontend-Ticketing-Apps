@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import logo from "../../assets/ebv.id 2.png";
+import Rupiah from "../../helpers/rupiah";
 
 import "./index.css";
 
@@ -46,7 +47,9 @@ const OrderInfo = (props) => {
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 <p className="main__order--title">One ticket price</p>
-                <p className="main__order--content">{price}</p>
+                <p className="main__order--content">
+                  <Rupiah number={price} />
+                </p>
               </div>
               <div className="d-flex justify-content-between align-items-center">
                 <p className="main__order--title">Seat choosed</p>

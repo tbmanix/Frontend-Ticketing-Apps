@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams, useLocation, useParams } from "react-router-dom";
 import axios from "../../utils/axios";
 
-import logocinema from "../../assets/ebv.id 2.png";
+import Ebv from "../../assets/ebv.id 2.png";
+import Cineone from "../../assets/cineonesponsor.png";
+import Hiflix from "../../assets/hiflixspnsor.png";
 
 import "./index.css";
+import { useSelector } from "react-redux";
+import Rupiah from "../../helpers/rupiah";
 // import CardSchedule from "../cardschedule";
 
 const Schedule = () => {
@@ -14,7 +18,14 @@ const Schedule = () => {
   const [data, setData] = useState([]);
   const [location, setLocation] = useState("");
 
-  const dataUser = JSON.parse(localStorage.getItem("dataUser"));
+  // const dataUser = JSON.parse(localStorage.getItem("dataUser"));
+  const dataUser = useSelector((state) => state.user.data[0]);
+
+  const [dataOrder, setDataOrder] = useState({
+    userId: dataUser.id,
+    movieId: params.id,
+    dateBooking: new Date().toISOString().split("T")[0]
+  });
 
   useEffect(() => {
     getdataScheduleById();
@@ -44,13 +55,7 @@ const Schedule = () => {
     }
   };
 
-  const [dataOrder, setDataOrder] = useState({
-    userId: dataUser[0].id,
-    movieId: params.id,
-    dateBooking: new Date().toISOString().split("T")[0]
-  });
-
-  console.log(dataOrder);
+  // console.log(data);
 
   // const disableDates = () => {
   //   let today, dd, mm, yyyy;
@@ -77,6 +82,7 @@ const Schedule = () => {
   // console.log(location);
 
   const changeDataBooking = (data) => {
+    console.log(data);
     setDataOrder({ ...dataOrder, ...data });
   };
   // console.log(changeDataBooking);
@@ -94,6 +100,7 @@ const Schedule = () => {
           <div className="schedule__dropdown d-flex justify-content-center">
             <div className="schedule__dropdown--date m-3">
               <input
+                className="date"
                 type="date"
                 value={dataOrder.dateBooking}
                 min={dataOrder.dateBooking}
@@ -101,7 +108,7 @@ const Schedule = () => {
               />
             </div>
             <div className="schedule__dropdown--place m-3">
-              <select name="location" onChange={handleLocation}>
+              <select className="location" name="location" onChange={handleLocation}>
                 <option value="">Select Location</option>
                 <option value="parung">Parung</option>
                 <option value="bogor">Bogor</option>
@@ -117,7 +124,18 @@ const Schedule = () => {
                     <div className="card-header bg-transparent border-secondary">
                       <div className="row">
                         <div className="col-md d-flex align-items-center justify-content-center">
-                          <img src={logocinema} alt="" />
+                          <img
+                            src={
+                              item.premiere === "ebv.id"
+                                ? Ebv
+                                : item.premiere === "cineone"
+                                ? Cineone
+                                : item.premiere === "hiflix"
+                                ? Hiflix
+                                : Ebv
+                            }
+                            alt=""
+                          />
                         </div>
                         <div className="col d-flex flex-column">
                           <p className="schedule__cinema--title">{item.premiere}</p>
@@ -132,7 +150,12 @@ const Schedule = () => {
                             className="btn btn-time"
                             key={itemTime}
                             onClick={() =>
-                              changeDataBooking({ timeBooking: itemTime, scheduleId: item.id })
+                              changeDataBooking({
+                                timeBooking: itemTime,
+                                scheduleId: item.id,
+                                name: item.name,
+                                premiere: item.premiere
+                              })
                             }
                           >
                             {itemTime}
@@ -141,7 +164,10 @@ const Schedule = () => {
                       </div>
                       <div className="schedule__cinema--price d-flex justify-content-between p-1 mt-4">
                         <p className="text-price">Price</p>
-                        <p className="text-content-price">{item.price}/seat</p>
+                        <p className="text-content-price">
+                          {/* {item.price}/seat */}
+                          <Rupiah number={item.price} />
+                        </p>
                       </div>
                       <div className="schedule__cinema--buttonjoin d-flex justify-content-center">
                         <button

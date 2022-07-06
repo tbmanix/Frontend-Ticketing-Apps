@@ -2,3 +2,43 @@
   margin-top: 100px;
   padding: 0 5rem 0;
 }
+.search--viewall {
+  width: 20rem;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sort--viewall {
+  width: 10rem;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+}
+.main__title--viewall {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+@media (max-width: 575.98px) {
+  .viewall {
+    padding: 0 15px;
+  }
+
+  .search--viewall {
+    width: 8rem !important;
+    background-color: rgb(231, 231, 231);
+    padding: 5px;
+  }
+
+  .sort--viewall {
+    background-color: rgb(224, 224, 224);
+    width: 5rem;
+    padding: 5px;
+  }
+
+  .main__title--viewall {
+    font-size: 20px;
+  }
+}

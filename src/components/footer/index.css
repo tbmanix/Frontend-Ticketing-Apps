@@ -67,6 +67,12 @@ footer {
     width: 30%;
     margin: 0 5px 0 0;
   }
+  .footer__image--logo {
+    padding-left: 0;
+  }
+  .footer__text--secondary {
+    padding-left: 0;
+  }
 
   .footer__text--link {
     display: inline;

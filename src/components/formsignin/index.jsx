@@ -6,6 +6,8 @@ import logo2 from "../../assets/logo2.svg";
 import eyeslash from "../../assets/eye-slash-fill.svg";
 import eye from "../../assets/eye-fill.svg";
 import "./index.css";
+import { useDispatch } from "react-redux";
+import { getUserById } from "../../stores/actions/user";
 
 const FormSignIn = () => {
   document.title = "Sign In";
@@ -16,6 +18,7 @@ const FormSignIn = () => {
   //   console.log(click);
   //   setClick(!click);
   // };
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const [form, setForm] = useState({
@@ -51,13 +54,14 @@ const FormSignIn = () => {
       localStorage.setItem("refreshToken", resultLogin.data.data.refreshToken);
       // localStorage.setItem("id", resultLogin.data.data.id);
 
-      const resultUser = await axios.get(`user/id/${resultLogin.data.data.id}`);
-      console.log(resultUser);
+      // const resultUser = await axios.get(`user/id/${resultLogin.data.data.id}`);
+      // console.log(resultUser);
+      // localStorage.setItem("dataUser", JSON.stringify(resultUser.data.data));
 
-      localStorage.setItem("dataUser", JSON.stringify(resultUser.data.data));
-      navigate("/home");
+      await dispatch(getUserById(resultLogin.data.data.id));
+      navigate("/");
     } catch (error) {
-      // console.log(error.response);
+      console.log(error.response);
       setIsError(true);
       setMessage(error.response.data.message);
       setForm({

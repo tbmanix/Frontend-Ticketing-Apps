@@ -19,13 +19,25 @@
 }
 
 @media (max-width: 575.98px) {
+  .main__title-payment {
+    padding: 0 !important;
+  }
   .main__title {
     margin: 0 -15px !important;
     padding: 10px 0 !important;
   }
   .card-payment {
-    border-radius: 20%;
+    border-radius: 25px !important;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 20px 0 0 0 !important;
+  }
+  .card-mobile {
+    padding: 50px 0 0 0 !important;
+  }
+
+  .card-mobile > div > p {
+    font-size: 20px !important;
+    margin: 10px 10px;
   }
   .dekstop {
     display: none !important;

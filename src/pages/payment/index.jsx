@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -28,7 +28,11 @@ const Payment = () => {
   const dataOrder = { ...state, paymentMethod: paymentMethod };
 
   console.log(dataOrder);
-
+  useEffect(() => {
+    if (!dataOrder) {
+      navigate("/");
+    }
+  }, []);
   const handleCreateBooking = async () => {
     try {
       const createBooking = await axios.post("booking/", dataOrder);
@@ -41,7 +45,7 @@ const Payment = () => {
       setMessage(createBooking.data.data.message);
       // navigate(`${createBooking.data.data.redirectUrl}`);
       // window.location = `${createBooking.data.data.redirectUrl}`;
-      window.location = `/home`;
+      // window.location = `/home`;
       window.open(`${createBooking.data.data.redirectUrl}`);
     } catch (error) {
       setIsError(true);
@@ -57,8 +61,8 @@ const Payment = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-md-8">
-              <PaymentInfo />
-              <PaymentMethod handleChangePayment={handleChangePayment} />
+              <PaymentInfo data={state} />
+              {/* <PaymentMethod handleChangePayment={handleChangePayment} /> */}
             </div>
             <div className="col-md-4">
               <PersonalInfo />

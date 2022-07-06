@@ -142,7 +142,7 @@ function ViewAll() {
   // console.log(pageInfo);
   const handleDetailMovie = (id) => {
     console.log(id);
-    navigate(`/movie/detail/${id}`);
+    navigate(`/moviedetail/${id}`);
   };
 
   return (
@@ -151,13 +151,13 @@ function ViewAll() {
       <div className="viewall">
         <div className="d-flex justify-content-between">
           <div>
-            <span className="main__title">All Movie</span>
+            <span className="main__title--viewall">All Movie</span>
           </div>
 
           <div>
             <input
               type="text"
-              className="me-3"
+              className="me-2 search--viewall"
               placeholder="search"
               onKeyPress={(e) => {
                 if (e.key === "Enter") {
@@ -165,7 +165,7 @@ function ViewAll() {
                 }
               }}
             />
-            <select name="sort" onChange={handleSorting}>
+            <select className="sort--viewall" name="sort" onChange={handleSorting}>
               <option value="">Sort</option>
               <option value="name ASC">A to Z</option>
               <option value="name DESC">Z to A</option>

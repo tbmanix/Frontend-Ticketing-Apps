@@ -1,34 +1,18 @@
 import React from "react";
 
-import Ebv from "../../assets/ebv.id 2.png";
-import Cineone from "../../assets/cineonesponsor.png";
-import Hiflix from "../../assets/hiflixspnsor.png";
+import logocinema from "../../assets/ebv.id 2.png";
 
-const CardSchedule = (props) => {
+const CardScheduleAdmin = (props) => {
   const { premiere, price, location, time } = props.data;
   // console.log(props);
 
-  const changeDataBooking = (data) => {
-    setDataOrder({ ...dataOrder, ...data.data });
-  };
   return (
     <div className="col-md-4">
       <div className="card card-schedule border-light shadow my-4">
         <div className="card-header bg-transparent border-secondary">
           <div className="row">
             <div className="col-md d-flex align-items-center justify-content-center">
-              <img
-                src={
-                  premiere === "ebvid"
-                    ? Ebv
-                    : premiere === "cineone"
-                    ? Cineone
-                    : premiere === "Hiflix"
-                    ? Hiflix
-                    : Ebv
-                }
-                alt=""
-              />
+              <img src={logocinema} alt="" />
             </div>
             <div className="col d-flex flex-column">
               <p className="schedule__cinema--title">{premiere}</p>
@@ -39,11 +23,7 @@ const CardSchedule = (props) => {
         <div className="card-body">
           <div className="schedule__cinema--button d-flex justify-content-between">
             {time.map((item) => (
-              <button
-                className="btn btn-time"
-                key={item}
-                onClick={() => changeDataBooking({ timeBooking: item, scheduleId: id })}
-              >
+              <button className="btn btn-time" key={item}>
                 {item}
               </button>
             ))}
@@ -53,8 +33,11 @@ const CardSchedule = (props) => {
             <p className="text-content-price">{price}/seat</p>
           </div>
           <div className="schedule__cinema--buttonjoin d-flex justify-content-center">
-            <button className="btn btn-primary w-100 m-2" onClick={() => props.handleBook()}>
-              Book Now
+            <button onClick={() => props.setUpdate(props.data)} className="btn__update me-4">
+              Update
+            </button>
+            <button onClick={() => props.handleDelete(props.data)} className="btn__delete ms-4">
+              Delete
             </button>
           </div>
         </div>
@@ -63,7 +46,7 @@ const CardSchedule = (props) => {
   );
 };
 
-CardSchedule.defaultProps = {
+CardScheduleAdmin.defaultProps = {
   category: "Default Category",
   data: {
     premiere: "",
@@ -73,4 +56,4 @@ CardSchedule.defaultProps = {
   }
 };
 
-export default CardSchedule;
+export default CardScheduleAdmin;

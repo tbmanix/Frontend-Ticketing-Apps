@@ -45,7 +45,7 @@ function BasicLogin() {
     } catch (error) {
       console.log(error.response);
       setIsError(true);
-      setMessage(error.response.data.msg);
+      setMessage(error.response.data.message);
     }
   };
 

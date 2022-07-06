@@ -12,9 +12,12 @@ import OrderPage from "./pages/orderpage";
 import Payment from "./pages/payment";
 import ViewAll from "./pages/viewall";
 import ManageMovie from "./pages/managemovie";
+import Profile from "./pages/profile";
 
 import PrivateRoute from "./helpers/route/privateRoute";
 import PublicRoute from "./helpers/route/publicRoute";
+import ManageSchedule from "./pages/manageschedule";
+import Dashboard from "./pages/dashboard";
 
 // import "dotenv/config";
 
@@ -31,7 +34,7 @@ function App() {
           <Route path="signup" element={<SignUp />} />
         </Route>
 
-        <Route path="home" element={<Home />} />
+        <Route path="" element={<Home />} />
         <Route element={<PrivateRoute isAdmin={false} />}>
           <Route path="viewall" element={<ViewAll />} />
           {/* <Route path="moviedetail" element={<MovieDetail />} /> */}
@@ -39,9 +42,12 @@ function App() {
           <Route path="moviedetail/:id" element={<MovieDetail />} />
           <Route path="orderpage" element={<OrderPage />} />
           <Route path="payment" element={<Payment />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
         <Route element={<PrivateRoute isAdmin={true} />}>
           <Route path="managemovie" element={<ManageMovie />} />
+          <Route path="manageschedule" element={<ManageSchedule />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>

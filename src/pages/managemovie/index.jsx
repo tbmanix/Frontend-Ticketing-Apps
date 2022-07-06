@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../utils/axios";
 import Pagination from "react-paginate";
+import swal from "sweetalert";
 
 import "./index.css";
 
@@ -8,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getMovie, postMovie, updateMovie, deleteMovie } from "../../stores/actions/movie";
 
 import CardAdmin from "../../components/cardadmin";
-import Navbar from "../../components/navbaradmin";
+import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import { useNavigate } from "react-router-dom";
 
@@ -37,7 +38,7 @@ function ManageMovie() {
     durationHour: "",
     durationMinute: "",
     synopsis: "",
-    image: null
+    image: ""
   });
 
   const [idMovie, setIdMovie] = useState("");
@@ -103,7 +104,7 @@ function ManageMovie() {
     }
   };
   console.log(image);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
     const { durationHour, durationMinute } = form;
@@ -129,8 +130,10 @@ function ManageMovie() {
       // name, "value"
     }
     console.log(formData);
-    dispatch(postMovie(formData));
-
+    const res = await dispatch(postMovie(formData));
+    swal(res.value.data.message, {
+      icon: "success"
+    });
     // console.log(`${form.durationHour}h ${form.durationMinute}m`);
     getDataMovie();
     setImage(null);
@@ -154,16 +157,17 @@ function ManageMovie() {
       // durationMinute: duration.split(" ")[1].substring(0, duration.split(" ")[1].length - 1),
       durationHour: duration.split(" ")[0].substring(0, duration.split(" ")[0].length - 1),
       durationMinute: duration.split(" ")[1].substring(0, duration.split(" ")[1].length - 1),
-      synopsis,
-      image
+      synopsis
+      // image
     });
 
     setIdMovie(id);
     setIsUpdate(true);
+    setImage(image);
     console.log(form);
   };
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
     console.log(form);
     console.log(idMovie);
@@ -173,18 +177,41 @@ function ManageMovie() {
     }
     // formData.append("name", form.name)
     // axios.patch("...", formData)
-    dispatch(updateMovie(idMovie, formData));
-
+    const res = await dispatch(updateMovie(idMovie, formData));
+    swal(res.value.data.message, {
+      icon: "success"
+    });
     getDataMovie();
-
     setIsUpdate(false);
     setImage(null);
     resetForm();
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteMovie(id));
-    console.log(id);
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this data",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true
+    }).then((willDelete) => {
+      if (willDelete) {
+        dispatch(deleteMovie(id))
+          .then((res) => {
+            console.log(res);
+            swal(res.value.data.message, {
+              icon: "success"
+            });
+            console.log(id);
+            getDataMovie();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        swal("Your data is safe!");
+      }
+    });
   };
 
   const resetForm = () => {
@@ -197,8 +224,9 @@ function ManageMovie() {
       durationHour: "",
       durationMinute: "",
       synopsis: "",
-      image: null
+      image: ""
     });
+    setImage(null);
   };
 
   return (
@@ -218,21 +246,16 @@ function ManageMovie() {
               >
                 <div className="row">
                   <div className="col-md-4">
-                    <input
-                      type="file"
-                      name="image"
-                      onChange={(e) => handleChangeForm(e)}
-                      // value={form.image}
-                    />
+                    <input type="file" name="image" onChange={(e) => handleChangeForm(e)} />
                     <div className="card image__preview">
-                      {" "}
+                      {/* {form.image} */}
                       {image && (
                         <img
                           className="image__preview--item"
                           // src={image}
                           src={
-                            isUpdate
-                              ? `https://res.cloudinary.com/dx8zjtlv8/image/upload/v1651042190/${form.image}`
+                            isUpdate && !form.image
+                              ? `https://res.cloudinary.com/dx8zjtlv8/image/upload/v1651042190/${image}`
                               : image
                           }
                           alt="image movie preview"
@@ -371,7 +394,7 @@ function ManageMovie() {
                   </div>
                 </div>
                 <div className="wrap-button-movie">
-                  <button type="submit" className="btn btn-reset">
+                  <button type="button" className="btn btn-reset" onClick={resetForm}>
                     Reset
                   </button>
                   <button type="submit" className="btn btn-submit">
@@ -389,7 +412,7 @@ function ManageMovie() {
               <div>
                 <input
                   type="text"
-                  className="me-3"
+                  className="me-3 search"
                   placeholder="search"
                   onKeyPress={(e) => {
                     if (e.key === "Enter") {
@@ -397,7 +420,7 @@ function ManageMovie() {
                     }
                   }}
                 />
-                <select name="sort" onChange={handleSorting}>
+                <select className="sort" name="sort" onChange={handleSorting}>
                   <option value="">Sort</option>
                   <option value="name ASC">A to Z</option>
                   <option value="name DESC">Z to A</option>

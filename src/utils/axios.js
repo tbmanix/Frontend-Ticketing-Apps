@@ -3,8 +3,8 @@ import axios from "axios";
 // console.log(REACT_APP_BASE_URL);
 const axiosApiIntances = axios.create({
   // baseURL: "https://project-tickitz.herokuapp.com/"
-  baseURL: "http://localhost:3001/"
-  // baseURL: process.env.REACT_APP_BASE_URL
+  // baseURL: "http://localhost:3001/"
+  baseURL: process.env.REACT_APP_BASE_URL
 });
 
 axiosApiIntances.interceptors.request.use(

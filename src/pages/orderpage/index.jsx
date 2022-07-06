@@ -7,10 +7,12 @@ import Seat from "../../components/seat";
 import SelectedMovie from "../../components/selectedmovie";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "../../utils/axios";
+import swal from "sweetalert";
 
 import "./index.css";
 
 import logo from "../../assets/ebv.id 2.png";
+import Rupiah from "../../helpers/rupiah";
 
 const OrderPage = () => {
   const navigate = useNavigate();
@@ -89,6 +91,11 @@ const OrderPage = () => {
     //   totalPayment: totalPayment
     // };
     // console.log(id);
+    if (selectedSeat.length === 0) {
+      return swal("Choose seat", {
+        icon: "error"
+      });
+    }
     navigate(`/payment`, {
       state: { ...state, seat: selectedSeat, totalPayment: totalPayment }
     });
@@ -101,7 +108,7 @@ const OrderPage = () => {
   };
   const handleChangeMovie = () => {
     // console.log(id);
-    navigate(`/home`);
+    navigate(`/`);
   };
   return (
     <>
@@ -152,7 +159,9 @@ const OrderPage = () => {
                       </div>
                       <div className="d-flex justify-content-between align-items-center">
                         <p className="main__order--title">One ticket price</p>
-                        <p className="main__order--content">{data.price}</p>
+                        <p className="main__order--content">
+                          <Rupiah number={data.price} />
+                        </p>
                       </div>
                       <div className="d-flex justify-content-between align-items-center">
                         <p className="main__order--title">Seat choosed</p>
@@ -163,7 +172,9 @@ const OrderPage = () => {
                   <div className="card-body">
                     <div className="price d-flex justify-content-between pt-4">
                       <p className="main__title--price">Price</p>
-                      <p className="main__content--price">{totalPayment}</p>
+                      <p className="main__content--price">
+                        <Rupiah number={totalPayment} />
+                      </p>
                     </div>
                   </div>
                 </div>

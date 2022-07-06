@@ -6,6 +6,7 @@ import ebvsponsor from "../../assets/ebvsponsor.png";
 import cineonesponsor from "../../assets/cineonesponsor.png";
 import hiflixsponsor from "../../assets/hiflixspnsor.png";
 import logo from "../../assets/logo2.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -22,9 +23,9 @@ const Footer = () => {
             <a href="" className="footer__text--link">
               Home
             </a>
-            <a href="" className="footer__text--link">
+            <Link to="/viewall" className="footer__text--link">
               List Movie
-            </a>
+            </Link>
           </div>
           <div className="col-md mt-3">
             <p className="footer__text--heading">Our Sponsor</p>

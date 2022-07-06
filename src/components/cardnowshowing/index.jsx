@@ -5,6 +5,7 @@ import logo from "../../assets/Rectangle 119.png";
 
 const CardNowShowing = (props) => {
   const { id, name, category, image } = props.data;
+  const cloudinary = process.env.REACT_APP_IMAGE_CLOUDINARY;
   //   console.log(props);
 
   return (
@@ -13,7 +14,7 @@ const CardNowShowing = (props) => {
         <img
           src={
             image
-              ? `https://res.cloudinary.com/dx8zjtlv8/image/upload/v1651042190/${image}`
+              ? `${cloudinary}/${image}`
               : "https://www.a1hosting.net/wp-content/themes/arkahost/assets/images/default.jpg"
           }
           alt="image-movie"

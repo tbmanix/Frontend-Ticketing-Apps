@@ -21,7 +21,7 @@ const NavBarAdmin = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top w-100">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/home">
+          <Link className="navbar-brand" to="/">
             <img src={logo} alt="" />
           </Link>
           <button
@@ -38,19 +38,19 @@ const NavBarAdmin = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item text-center">
-                <Link className="nav-link  mx-5 fw-bold" to="/home">
+                <Link className="nav-link  mx-5 fw-bold" to="/">
                   Dashboard
                 </Link>
               </li>
               <hr />
               <li className="nav-item text-center">
-                <Link className="nav-link mx-5 fw-bold" to="/viewall">
+                <Link className="nav-link mx-5 fw-bold" to="/managemovie">
                   Manage Movie
                 </Link>
               </li>
               <hr />
               <li className="nav-item text-center">
-                <Link className="nav-link mx-5 fw-bold" to="/viewall">
+                <Link className="nav-link mx-5 fw-bold" to="/manageschedule">
                   Manage Schedule
                 </Link>
               </li>

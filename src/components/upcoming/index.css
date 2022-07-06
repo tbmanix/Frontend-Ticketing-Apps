@@ -32,3 +32,12 @@
   background-color: var(--primary);
   box-shadow: rgba(95, 46, 234, 0.4) 0px 10px 20px;
 }
+
+@media (max-width: 575.98px) {
+  .upcoming__btn {
+    max-width: 5rem !important;
+    min-width: 7rem !important;
+    margin: 5px 5px;
+    padding: 5px 10px;
+  }
+}

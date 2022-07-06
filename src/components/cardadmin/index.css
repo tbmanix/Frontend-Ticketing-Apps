@@ -1,26 +1,3 @@
-.card-upcoming {
-  /* height: 100% !important; */
-  /* max-height: 450px !important; */
-  max-width: 14rem;
-  margin: 0 50px 30px !important;
-  min-width: 12rem !important;
-  padding: 30px !important;
-  border-radius: 4% !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-.upcoming-image {
-  width: 100%;
-  height: 250px !important;
-  object-fit: cover;
-}
-
-.card-desc-upcoming {
-  height: 120px;
-}
-
 .btn__update {
   background-color: #ffffff;
   border: 2px solid var(--primary);

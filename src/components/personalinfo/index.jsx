@@ -49,6 +49,7 @@ const PersonalInfo = () => {
                   value={form.noTelp}
                   onChange={handleChangeForm}
                   className="form-control form-rounded p-3"
+                  placeholder="45678"
                 />
               </div>
               <div className="alert alert-warning bi-exclamation-triangle" role="alert">

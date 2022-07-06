@@ -70,3 +70,18 @@
 .image__preview--item {
   width: 40%;
 }
+
+.search {
+  width: 20rem;
+  border: none;
+  padding: 10px;
+  border-radius: 20rem;
+}
+
+.sort {
+  width: 10rem;
+  padding: 10px;
+  border-radius: 20rem;
+  border: none;
+  background-color: white;
+}

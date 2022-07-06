@@ -1,0 +1,40 @@
+.selectMovie {
+  border: none !important;
+  background-color: white;
+  width: 100%;
+}
+
+.time-schedule {
+  width: 100% !important;
+  text-align: center;
+}
+
+.select-location {
+  border: none !important;
+  background-color: white;
+  width: 100%;
+}
+
+.button-premiere {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid #a5a5a5;
+  padding: 5px;
+}
+.button-premiere-active {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 2px solid #680be2;
+  padding: 5px;
+}
+
+.backgroundFoto {
+  width: 50%;
+  height: 250px;
+  background-color: rgb(185, 185, 185);
+  object-fit: cover;
+}

@@ -4,6 +4,7 @@ import axios from "../../utils/axios";
 import "./index.css";
 
 import Card from "../card";
+import { Link } from "react-router-dom";
 
 const Upcoming = () => {
   const limit = 99;
@@ -68,9 +69,9 @@ const Upcoming = () => {
         <a href="" className="nowshowing__text">
           Upcoming
         </a>
-        <a href="" className="nowshowing__text">
-          view all
-        </a>
+        <Link to="/viewall" className="nowshowing__text">
+          View All
+        </Link>
       </div>
       <div className="d-flex flex-nowrap overflow-auto text-center my-5">
         {month.map((item) => (

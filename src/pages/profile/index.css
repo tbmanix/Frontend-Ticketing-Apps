@@ -1,0 +1,115 @@
+.main-profile {
+  padding-top: 80px;
+}
+
+.profile-menu {
+  color: black;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+.btn-update-profile {
+  margin: 20px 0;
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  padding: 10px;
+  border-radius: 1rem;
+}
+
+.profile-header {
+  background-color: white;
+  padding: 20px 10px;
+  font-size: 20px;
+}
+
+.card-profile {
+  border-radius: 1rem;
+  /* background-color: aqua; */
+  /* border: 1px black solid; */
+}
+
+.image-profile-page {
+  /* width: 100%; */
+  padding: 20px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  box-sizing: border-box;
+  /* background-color: aqua; */
+}
+
+.btn-logout-profile {
+  margin: 20px 0;
+  /* width: 100%; */
+  background-color: var(--primary);
+  color: white;
+  padding: 10px;
+  border-radius: 1rem;
+}
+
+.card-profile {
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  /* background-color: aqua; */
+}
+
+.ava-profile {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  /* background-color: rgb(175, 175, 175); */
+  border-radius: 100%;
+  /* align-self: center; */
+  position: relative;
+}
+
+.loading {
+  width: 300px;
+  height: 300px;
+  background-color: rgb(175, 175, 175);
+  border-radius: 100%;
+  /* align-self: center; */
+  display: grid;
+  place-items: center;
+}
+.size-spinner-grow {
+  width: 10rem;
+  height: 10rem;
+}
+
+.circle {
+  background-color: rgb(232, 231, 245);
+  backdrop-filter: blur(100px);
+  border-radius: 50%;
+  position: absolute;
+  /* top: 10; */
+  /* left: 10; */
+  /* right: 10; */
+  /* bottom: 10; */
+  left: 65%;
+  top: 70%;
+  height: 60px;
+  width: 60px;
+  display: grid;
+  place-items: center;
+}
+
+.shadow-card-booking {
+  box-shadow: 10rem;
+}
+
+@media (max-width: 575.98px) {
+  .ava-profile,
+  .loading {
+    width: 150px;
+    height: 150px;
+  }
+  .circle {
+    left: 55%;
+    top: 60%;
+    height: 50px;
+    width: 50px;
+  }
+}
