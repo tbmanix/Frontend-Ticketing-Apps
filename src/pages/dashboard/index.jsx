@@ -139,23 +139,28 @@ function Dashboard() {
 
   // console.log(dataDashboard);
 
-  const labels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "Agustus",
-    "September",
-    "October",
-    "November",
-    "Desember"
-  ];
+  const dataLabels = dataDashboard.map((item) => {
+    return item.month;
+  });
+  // [
+  //   "January",
+  //   "February",
+  //   "March",
+  //   "April",
+  //   "May",
+  //   "June",
+  //   "July",
+  //   "Agustus",
+  //   "September",
+  //   "October",
+  //   "November",
+  //   "Desember"
+  // ];
   // const income = dataDashboard.map((item) => {
   //   return item.total;
   // });
+
+  const labels = dataLabels.sort();
 
   const dataChart = {
     labels,

@@ -14,7 +14,7 @@ import {
   updateSchedule
 } from "../../stores/actions/schedule";
 
-import Navbar from "../../components/navbaradmin";
+import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
 import cardSchedule from "../../components/cardschedule";
