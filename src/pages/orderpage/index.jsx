@@ -84,6 +84,8 @@ const OrderPage = () => {
   console.log(selectedSeat);
   // setTotalPayment(selectedSeat.length * data.price);
 
+  // console.log(data);
+
   const handleCheckOut = () => {
     // const dataOrder = {
     //   ...state,
@@ -106,6 +108,7 @@ const OrderPage = () => {
     // console.log(totalPayment);
     // console.log(dataOrder);
   };
+
   const handleChangeMovie = () => {
     // console.log(id);
     navigate(`/`);
